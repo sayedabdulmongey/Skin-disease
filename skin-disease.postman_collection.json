@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "e832f3e8-73e6-4250-aa55-199b052a967f",
+		"name": "skin-disease",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39150731"
+	},
+	"item": [
+		{
+			"name": "prediction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/deadlypoison/Downloads/tmp_files/isa/0_1.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/predict",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"predict"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
