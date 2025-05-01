@@ -18,7 +18,7 @@ global_mean, global_std = np.array([0.66200879, 0.49884228, 0.48171022]), np.arr
 
 def get_data():
 
-    return kagglehub.dataset_download('ismailpromus/skin-diseases-image-dataset')
+    return kagglehub.dataset_download('ismailpromus/skin-diseases-image-dataset')+'/IMG_CLASSES'
 
 
 def calculate_mean_std():
@@ -65,7 +65,7 @@ def get_data_loaders(batch_size=32):
     testing_dataset = datasets.ImageFolder(
         dataset_path, transform=data_transform['test'])
 
-    save_class_names(training_dataset.class_to_idx)
+    cleaned_class_names = clean_class_names(training_dataset.class_to_idx)
 
     train_size = int(0.7*len(training_dataset))
     valid_size = int(0.15*len(training_dataset))
@@ -103,7 +103,7 @@ def clean_class_names(class_names):
             clean_name = match.group(1).strip()
         else:
             clean_name = class_name  # fallback if regex fails
-        cleaned_names[clean_name] = idx
+        cleaned_names[f'{idx}'] = clean_name
 
     save_class_names(cleaned_names)
 
